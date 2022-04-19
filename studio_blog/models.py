@@ -7,6 +7,7 @@ MOVIE_GENRE = (
     ("Documentary", "Documentary"),
     ("Drama", "Drama"),
     ("Family", "Family"),
+    ("Tv Shows", "Tv Shows"),
 )
 
 AVAILABILITY = (
