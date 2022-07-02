@@ -3,8 +3,15 @@ from datetime import datetime, date, time, timedelta
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
-from .models import StudioMovies
-from .serializers import StudioMoviesSerializer
+from .models import StudioMovies, Gallery
+from .serializers import StudioMoviesSerializer, GallerySerializer
+
+
+@api_view(['GET'])
+def get_all_gallery(request):
+    gallery = Gallery.objects.all().order_by('-date_posted')
+    serializer = GallerySerializer(gallery, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -56,6 +63,13 @@ def get_drama(request):
 @api_view(['GET'])
 def get_family(request):
     family = StudioMovies.objects.filter(genre="Drama").order_by('-date_posted')
+    serializer = StudioMoviesSerializer(family, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_television(request):
+    family = StudioMovies.objects.filter(genre="Tv Shows").order_by('-date_posted')
     serializer = StudioMoviesSerializer(family, many=True)
     return Response(serializer.data)
 

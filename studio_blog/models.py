@@ -35,3 +35,13 @@ class StudioMovies(models.Model):
         value = self.movie_title
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+
+    def get_movie_poster(self):
+        if self.poster:
+            return 'http://127.0.0.1:8000' + self.poster.url
+        return ""
+
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to="gallery")
+    date_posted = models.DateTimeField(auto_now_add=True)
