@@ -52,7 +52,7 @@ class Gallery(models.Model):
 
     def get_image(self):
         if self.image:
-            return "http://127.0.0.1:8000" + self.image.url
+            return "https://aglistudiosgh.xyz/" + self.image.url
         ""
 
 
@@ -66,6 +66,6 @@ class DuringProduction(models.Model):
 
     def get_video(self):
         if self.video:
-            return "http://127.0.0.1:8000" + self.video.url
+            return "https://aglistudiosgh.xyz/" + self.video.url
         ""
 
