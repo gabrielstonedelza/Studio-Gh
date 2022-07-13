@@ -11,6 +11,7 @@ urlpatterns = [
     path('movies/drama/', views.get_drama),
     path('movies/family/', views.get_family),
     path('gallery/', views.get_all_gallery),
+    path('pro_vids/', views.get_production_vids),
     path('movies/now_available/', views.get_now_available),
     path('movies/in_theaters/', views.get_in_theaters),
     path('movies/coming_soon/', views.get_coming_soon),

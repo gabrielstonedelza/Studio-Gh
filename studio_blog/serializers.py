@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import StudioMovies, Gallery
+from .models import StudioMovies, Gallery, DuringProduction
 
 
 class StudioMoviesSerializer(serializers.ModelSerializer):
@@ -13,4 +13,10 @@ class StudioMoviesSerializer(serializers.ModelSerializer):
 class GallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = Gallery
-        fields = ['id', 'image', 'date_posted']
+        fields = ['id', 'image', 'date_posted', 'get_image', 'caption']
+
+
+class DuringProductionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DuringProduction
+        fields = ['id', 'title', 'video', 'date_posted', 'get_video']

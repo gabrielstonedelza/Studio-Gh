@@ -44,4 +44,28 @@ class StudioMovies(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
+    caption = models.CharField(max_length=255, default="")
     date_posted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.caption
+
+    def get_image(self):
+        if self.image:
+            return "http://127.0.0.1:8000" + self.image.url
+        ""
+
+
+class DuringProduction(models.Model):
+    title = models.CharField(max_length=100)
+    video = models.FileField(upload_to="Production Videos")
+    date_posted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_video(self):
+        if self.video:
+            return "http://127.0.0.1:8000" + self.video.url
+        ""
+

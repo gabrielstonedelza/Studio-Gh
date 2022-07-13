@@ -3,8 +3,15 @@ from datetime import datetime, date, time, timedelta
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
-from .models import StudioMovies, Gallery
-from .serializers import StudioMoviesSerializer, GallerySerializer
+from .models import StudioMovies, Gallery, DuringProduction
+from .serializers import StudioMoviesSerializer, GallerySerializer, DuringProductionSerializer
+
+
+@api_view(['GET'])
+def get_production_vids(request):
+    gallery = DuringProduction.objects.all().order_by('-date_posted')
+    serializer = DuringProductionSerializer(gallery, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
