@@ -19,4 +19,4 @@ class GallerySerializer(serializers.ModelSerializer):
 class DuringProductionSerializer(serializers.ModelSerializer):
     class Meta:
         model = DuringProduction
-        fields = ['id', 'title', 'video', 'date_posted', 'get_video']
+        fields = ['id', 'title', 'video', 'poster', 'date_posted', 'get_video', 'get_poster']

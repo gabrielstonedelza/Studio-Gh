@@ -59,6 +59,7 @@ class Gallery(models.Model):
 class DuringProduction(models.Model):
     title = models.CharField(max_length=100)
     video = models.FileField(upload_to="Production Videos")
+    poster = models.ImageField(upload_to="Poster",default="")
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -67,5 +68,10 @@ class DuringProduction(models.Model):
     def get_video(self):
         if self.video:
             return "https://aglistudiosgh.xyz/" + self.video.url
+        ""
+
+    def get_poster(self):
+        if self.poster:
+            return "https://aglistudiosgh.xyz/" + self.poster.url
         ""
 
